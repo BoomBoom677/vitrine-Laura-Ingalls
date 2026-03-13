@@ -136,7 +136,7 @@
       <div class="container">
         <h2 class="section-title fade-in">Pourquoi choisir Laura Ingalls ?</h2>
         <p class="section-intro fade-in delay-1">
-          Des avantages concrets et sérieux pour vous aidez à nous adopter.
+          Des avantages concrets et sérieux pour vous aider à nous adopter.
         </p>
 
         <div class="card-grid">
@@ -213,26 +213,46 @@
           <article class="contact-card fade-in delay-1">
             <h3>Demande de devis</h3>
 
-            <form action="#" method="post">
+            <form action="#" method="post" id="contact-form" novalidate>
               <div class="form-row">
-                <div>
+                <div class="form-group">
                   <label for="nom">Nom</label>
-                  <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    placeholder="Votre nom"
+                    required
+                  />
+                  <small class="error-message" id="nom-error"></small>
                 </div>
 
-                <div>
+                <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" name="email" placeholder="exemple@email.com" required />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="exemple@email.com"
+                    required
+                  />
+                  <small class="error-message" id="email-error"></small>
                 </div>
               </div>
 
               <div class="form-row">
-                <div>
+                <div class="form-group">
                   <label for="telephone">Téléphone</label>
-                  <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" />
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    placeholder="06 00 00 00 00"
+                  />
+                  <small class="error-message" id="telephone-error"></small>
                 </div>
 
-                <div>
+                <div class="form-group">
                   <label for="type-evenement">Type d'événement</label>
                   <select id="type-evenement" name="type-evenement" required>
                     <option value="">Sélectionnez</option>
@@ -241,10 +261,11 @@
                     <option value="seminaire">Séminaire</option>
                     <option value="soiree-privee">Soirée privée</option>
                   </select>
+                  <small class="error-message" id="type-evenement-error"></small>
                 </div>
               </div>
 
-              <div>
+              <div class="form-group">
                 <label for="message">Message</label>
                 <textarea
                   id="message"
@@ -252,21 +273,24 @@
                   placeholder="Décrivez votre projet, la date souhaitée et vos attentes..."
                   required
                 ></textarea>
+                <small class="error-message" id="message-error"></small>
               </div>
 
-            <div class="rgpd-box">
-              <label class="rgpd-label">
-                <input type="checkbox" name="consentement" required />
-                J'accepte que mes données soient utilisées pour être recontacté dans le cadre de ma demande.
-              </label>
-              <p class="rgpd-text">
-                Les informations envoyées via ce formulaire sont utilisées uniquement pour répondre à votre demande.
-                Vous pouvez demander la suppression de vos données à tout moment par email.
-              </p>
-            </div>
+              <div class="rgpd-box">
+                <label class="rgpd-label" for="consentement">
+                  <input type="checkbox" id="consentement" name="consentement" required />
+                  J'accepte que mes données soient utilisées pour être recontacté dans le cadre de ma demande.
+                </label>
+                <p class="rgpd-text">
+                  Les informations envoyées via ce formulaire sont utilisées uniquement pour répondre à votre demande.
+                  Vous pouvez demander la suppression de vos données à tout moment par email.
+                </p>
+                <small class="error-message" id="consentement-error"></small>
+              </div>
 
-            <button class="btn" type="submit">Envoyer</button>
-            
+              <div id="form-message" class="form-message" aria-live="polite"></div>
+
+              <button class="btn" type="submit">Envoyer</button>
             </form>
           </article>
 
@@ -288,36 +312,38 @@
       </div>
     </section>
   </main>
-   <section id="mentions" class="section legal-section">
-     <div class="container">
-       <h2 class="section-title">Mentions légales & confidentialité</h2>
-       <div class="legal-content">
-         <p>
-           <strong>Responsable du site :</strong> Laura Ingalls
-         </p>
-         <p>
-           <strong>Contact :</strong> lucaschalinet@gmail.com - 07 77 60 47 18
-         </p>
-         <p>
-           <strong>Zone d’activité :</strong> Alsace
-         </p>
-         <p>
-           <strong>Hébergement :</strong> aka Lucas Chalinet
-         </p>
-         <p>
-           Les données collectées via le formulaire de contact (nom, email, téléphone, type d’événement, message)
-           sont utilisées uniquement pour répondre aux demandes envoyées par les visiteurs.
-         </p>
-         <p>
-           Ces données ne sont pas revendues ni transmises à des tiers.
-         </p>
-         <p>
-           Conformément au RGPD, vous pouvez demander l’accès, la modification ou la suppression de vos données
-           en écrivant à : lucaschalinet@gmail.com
-         </p>
-       </div>
-     </div>
-</section>
+
+  <section id="mentions" class="section legal-section">
+    <div class="container">
+      <h2 class="section-title">Mentions légales & confidentialité</h2>
+      <div class="legal-content">
+        <p>
+          <strong>Responsable du site :</strong> Laura Ingalls
+        </p>
+        <p>
+          <strong>Contact :</strong> lucaschalinet@gmail.com - 07 77 60 47 18
+        </p>
+        <p>
+          <strong>Zone d’activité :</strong> Alsace
+        </p>
+        <p>
+          <strong>Hébergement :</strong> localhost
+        </p>
+        <p>
+          Les données collectées via le formulaire de contact (nom, email, téléphone, type d’événement, message)
+          sont utilisées uniquement pour répondre aux demandes envoyées par les visiteurs.
+        </p>
+        <p>
+          Ces données ne sont pas revendues ni transmises à des tiers.
+        </p>
+        <p>
+          Conformément au RGPD, vous pouvez demander l’accès, la modification ou la suppression de vos données
+          en écrivant à : lucaschalinet@gmail.com
+        </p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container footer-content">
       <p><strong>Laura Ingalls</strong> - Organisation d'événements en Alsace</p>
@@ -325,5 +351,7 @@
       <p><a href="#mentions">Mentions légales & confidentialité</a></p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
