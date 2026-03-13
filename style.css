@@ -361,8 +361,7 @@ h1 {
 /* SECTIONS CLAIRES / FOND */
 
 .advantages {
-  background:
-    linear-gradient(180deg, #f1e8dd 0%, #f7f3ee 100%);
+  background: linear-gradient(180deg, #f1e8dd 0%, #f7f3ee 100%);
 }
 
 /* CARTES */
@@ -453,6 +452,11 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -640,6 +644,9 @@ footer {
     padding: 75px 0;
   }
 }
+
+/* RGPD + LEGAL */
+
 .rgpd-box {
   margin-top: 8px;
   padding: 16px;
@@ -689,4 +696,39 @@ footer {
 
 .legal-content strong {
   color: var(--text);
+}
+
+/* VALIDATION FORMULAIRE */
+
+.error-message {
+  display: block;
+  min-height: 20px;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #b42318;
+  font-weight: 600;
+}
+
+.input-error {
+  border-color: #d92d20 !important;
+  box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.12) !important;
+}
+
+.input-valid {
+  border-color: #2e8b57 !important;
+  box-shadow: 0 0 0 4px rgba(46, 139, 87, 0.12) !important;
+}
+
+.form-message {
+  min-height: 24px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.success-message {
+  color: #1f7a47;
+}
+
+.error-global-message {
+  color: #b42318;
 }

@@ -221,7 +221,7 @@
                     type="text"
                     id="nom"
                     name="nom"
-                    placeholder="Votre nom"
+                    placeholder="Votre nom *"
                     required
                   />
                   <small class="error-message" id="nom-error"></small>
@@ -233,7 +233,7 @@
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="exemple@email.com"
+                    placeholder="exemple@email.com *"
                     required
                   />
                   <small class="error-message" id="email-error"></small>
@@ -247,7 +247,7 @@
                     type="tel"
                     id="telephone"
                     name="telephone"
-                    placeholder="06 00 00 00 00"
+                    placeholder="06 00 00 00 00 *"
                   />
                   <small class="error-message" id="telephone-error"></small>
                 </div>
@@ -255,7 +255,7 @@
                 <div class="form-group">
                   <label for="type-evenement">Type d'événement</label>
                   <select id="type-evenement" name="type-evenement" required>
-                    <option value="">Sélectionnez</option>
+                    <option value="">Sélectionnez    *</option>
                     <option value="mariage">Mariage</option>
                     <option value="anniversaire">Anniversaire</option>
                     <option value="seminaire">Séminaire</option>
@@ -270,7 +270,7 @@
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="Décrivez votre projet, la date souhaitée et vos attentes..."
+                  placeholder="Décrivez votre projet, la date souhaitée et vos attentes... *"
                   required
                 ></textarea>
                 <small class="error-message" id="message-error"></small>
@@ -289,6 +289,10 @@
               </div>
 
               <div id="form-message" class="form-message" aria-live="polite"></div>
+
+              <p class="form-legend">
+                <span class="required">*</span> Champs obligatoires
+              </p>
 
               <button class="btn" type="submit">Envoyer</button>
             </form>
