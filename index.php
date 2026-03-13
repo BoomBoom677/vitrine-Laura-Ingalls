@@ -1,3 +1,48 @@
+<?php
+
+$successMessage = "";
+$errorMessage = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    function clean($data) {
+        return htmlspecialchars(trim($data));
+    }
+
+    $nom = clean($_POST["nom"] ?? "");
+    $email = clean($_POST["email"] ?? "");
+    $telephone = clean($_POST["telephone"] ?? "");
+    $typeEvenement = clean($_POST["type-evenement"] ?? "");
+    $message = clean($_POST["message"] ?? "");
+
+    if (!empty($nom) && !empty($email) && !empty($message)) {
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errorMessage = "Adresse email invalide.";
+        } else {
+
+            $to = "lucaschalinet@gmail.com";
+            $subject = "Nouvelle demande de contact";
+
+            $content = "Nom : $nom\n";
+            $content .= "Email : $email\n";
+            $content .= "Téléphone : $telephone\n";
+            $content .= "Type d'événement : $typeEvenement\n\n";
+            $content .= "Message :\n$message";
+
+            $headers = "From: $email";
+
+            mail($to, $subject, $content, $headers);
+
+            $successMessage = "Votre message a bien été envoyé.";
+        }
+
+    } else {
+        $errorMessage = "Veuillez remplir les champs obligatoires.";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -53,7 +98,7 @@
 
         <div class="hero-visual fade-in delay-1">
           <img
-            src="image-deco-elegante.jpg"
+            src="images/image-deco-elegante.jpg"
             alt="Décoration élégante pour un événement haut de gamme"
           />
           <div class="floating-box">
@@ -177,7 +222,7 @@
         <div class="gallery">
           <figure class="fade-in delay-1">
             <img
-              src="image-table-mariage.jpg"
+              src="images/image-table-mariage.jpg"
               alt="Table de réception décorée pour un mariage"
             />
             <figcaption>Mariage élégant avec décoration florale et mise en scène raffinée.</figcaption>
@@ -185,7 +230,7 @@
 
           <figure class="fade-in delay-2">
             <img
-              src="image-salle-seminaire.jpg"
+              src="images/image-salle-seminaire.jpg"
               alt="Salle préparée pour un séminaire d'entreprise"
             />
             <figcaption>Séminaire professionnel pensé pour offrir confort, fluidité et image de marque.</figcaption>
@@ -193,7 +238,7 @@
 
           <figure class="fade-in delay-3">
             <img
-              src="image-anniversaire-privee.jpg"
+              src="images/image-anniversaire-privee.jpg"
               alt="Décoration festive pour un anniversaire privé"
             />
             <figcaption>Anniversaire personnalisé avec ambiance chaleureuse et détails soignés.</figcaption>
@@ -212,6 +257,13 @@
         <div class="contact-grid">
           <article class="contact-card fade-in delay-1">
             <h3>Demande de devis</h3>
+            <?php if (!empty($successMessage)) : ?>
+            <p class="success-message"><?php echo $successMessage; ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($errorMessage)) : ?>
+            <p class="error-global-message"><?php echo $errorMessage; ?></p>
+            <?php endif; ?>
 
             <form action="#" method="post" id="contact-form" novalidate>
               <div class="form-row">
